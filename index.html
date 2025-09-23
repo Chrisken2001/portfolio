@@ -2,144 +2,166 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio</title>
-
-  <!-- Google Fonts: Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
-
   <style>
-    /* Background animation */
     body {
       margin: 0;
-      padding: 0;
-      background: linear-gradient(-45deg, #25232f, #303040, #25232f, #303040);
-      background-size: 400% 400%;
-      animation: gradientBG 12s ease infinite;
       font-family: 'Poppins', sans-serif;
+      background: linear-gradient(270deg, #25232f, #303040);
+      background-size: 400% 400%;
+      animation: gradientMove 15s ease infinite;
       color: white;
-      scroll-behavior: smooth;
+      text-align: center;
     }
 
-    @keyframes gradientBG {
+    h1 {
+      margin: 20px 0;
+      font-size: 2.5em;
+      font-weight: bold;
+    }
+
+    .image-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .image-container img {
+      display: block;
+      margin: 20px auto;
+      max-width: 90%;
+      height: auto;
+      border-radius: 10px;
+      pointer-events: none;
+      user-select: none;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 255, 255, 0.1);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .image-container img.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .image-container img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 255, 255, 0.2);
+    }
+
+    @keyframes gradientMove {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
-    h1 {
-      text-align: center;
-      padding: 30px 20px;
-      font-size: 3rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-shadow: 0 4px 12px rgba(0,0,0,0.6);
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-    }
-
-    img {
-      width: 5000px;
-      height: 5000px;
-      max-width: 90%;
-      height: auto;
-      margin: 50px 0;
-      border-radius: 12px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 1s ease;
-    }
-
-    img.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Back to Top Button */
+    /* Back to Top button */
     #backToTop {
       position: fixed;
-      bottom: 40px;
-      right: 40px;
-      width: 60px;
-      height: 60px;
+      bottom: 20px;
+      right: 20px;
+      padding: 12px 18px;
+      font-size: 16px;
+      background: #303040;
+      color: white;
       border: none;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #25232f, #303040);
-      color: #fff;
-      font-size: 22px;
-      font-weight: bold;
+      border-radius: 8px;
       cursor: pointer;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-      display: none; /* hidden by default */
-      justify-content: center;
-      align-items: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      z-index: 1000;
+      display: none;
+      opacity: 0;
+      transform: scale(0);
+      transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
-    #backToTop:hover {
-      transform: scale(1.2);
-      box-shadow: 0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(48,48,64,0.6);
+    /* Button pop animation */
+    #backToTop.show {
+      display: block;
+      opacity: 1;
+      transform: scale(1.1);
+      animation: popIn 0.3s ease;
     }
 
-    /* Pop-in animation when button appears */
+    /* Scroll up animation */
+    #backToTop.scrollUp {
+      animation: bounce 0.4s ease;
+    }
+
     @keyframes popIn {
       from { transform: scale(0); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+      to { transform: scale(1.1); opacity: 1; }
     }
+
+    @keyframes bounce {
+      0%, 100% { transform: scale(1.1); }
+      50% { transform: scale(1.3); }
+    }
+
   </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
+
   <h1>My Portfolio</h1>
-  <div class="container">
-    <img src="1.png" alt="Image 1">
-    <img src="2.png" alt="Image 2">
-    <img src="3.png" alt="Image 3">
-    <img src="4.png" alt="Image 4">
-    <img src="5.png" alt="Image 5">
-    <img src="6.png" alt="Image 6">
-    <img src="7.png" alt="Image 7">
-    <img src="8.png" alt="Image 8">
-    <img src="9.png" alt="Image 9">
-  </div>
+
+  <!-- Images -->
+  <div class="image-container"><img src="1.png" alt="Image 1"></div>
+  <div class="image-container"><img src="2.png" alt="Image 2"></div>
+  <div class="image-container"><img src="3.png" alt="Image 3"></div>
+  <div class="image-container"><img src="4.png" alt="Image 4"></div>
+  <div class="image-container"><img src="5.png" alt="Image 5"></div>
+  <div class="image-container"><img src="6.png" alt="Image 6"></div>
+  <div class="image-container"><img src="7.png" alt="Image 7"></div>
+  <div class="image-container"><img src="8.png" alt="Image 8"></div>
+  <div class="image-container"><img src="9.png" alt="Image 9"></div>
 
   <!-- Back to Top Button -->
-  <button id="backToTop">↑</button>
+  <button id="backToTop">Back to Top</button>
 
   <script>
-    // Reveal animation on scroll
-    const images = document.querySelectorAll("img");
+    const backToTop = document.getElementById("backToTop");
+    let lastScroll = 0;
+
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.pageYOffset;
+
+      // Show button when scrolling down
+      if (currentScroll > 200) {
+        backToTop.classList.add("show");
+      } else {
+        backToTop.classList.remove("show");
+      }
+
+      // Add scroll up animation
+      if (currentScroll < lastScroll && currentScroll > 200) {
+        backToTop.classList.add("scrollUp");
+        setTimeout(() => backToTop.classList.remove("scrollUp"), 400); // remove after animation
+      }
+
+      lastScroll = currentScroll;
+    });
+
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Disable long press on mobile
+    document.addEventListener("touchstart", function(e) {
+      if (e.target.tagName === "IMG") e.preventDefault();
+    }, { passive: false });
+
+    // Scroll reveal for images
+    const images = document.querySelectorAll(".image-container img");
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("show");
+          observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.2 });
 
     images.forEach(img => observer.observe(img));
-
-    // Back to top button logic
-    const backToTopBtn = document.getElementById("backToTop");
-
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > window.innerHeight / 2) {
-        backToTopBtn.style.display = "flex";
-        backToTopBtn.style.animation = "popIn 0.4s ease";
-      } else {
-        backToTopBtn.style.display = "none";
-      }
-    });
-
-    backToTopBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
   </script>
 </body>
 </html>

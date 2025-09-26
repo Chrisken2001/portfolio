@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -105,8 +106,28 @@
       text-align: center;
       background: rgba(0,0,0,0.2);
     }
+
     footer span {
       color: #ff4d6d;
+    }
+
+    .cursive-name {
+      font-family: 'Great Vibes', cursive;
+      font-weight: bold;
+      font-size: 22px;
+      color: #fff;
+      text-shadow: 0 0 5px #fff, 0 0 10px #ff4d6d, 0 0 20px #ff4d6d;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    /* Glow animation */
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #fff, 0 0 10px #ff4d6d, 0 0 20px #ff4d6d;
+      }
+      to {
+        text-shadow: 0 0 10px #fff, 0 0 20px #ff6b8a, 0 0 30px #ff6b8a;
+      }
     }
   </style>
 </head>
@@ -128,11 +149,11 @@
   <div class="image-container"><img src="9.png" alt="Image 9"></div>
 
   <!-- Back to Top Button -->
-  <button id="backToTop">⬆ Back to Top</button>
+  <button id="backToTop"> Back to Top</button>
 
   <!-- Footer -->
   <footer>
-    Made with <span>❤️</span> by Christopher Kenneth A. Arceo
+    Made with <span>❤️</span> by <span class="cursive-name">ChrisKen</span>
   </footer>
 
   <script>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - ChrisKen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(-45deg, #25232f, #303040, #25232f, #303040);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 15px 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #00d4ff;
+      transform: translateY(-2px);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 100px 20px 50px;
+      text-align: center;
+    }
+
+    .contact-section h1 {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+
+    .contact-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+    }
+
+    .card i {
+      font-size: 32px;
+      color: #00d4ff;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin: 10px 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .card p, .card a {
+      font-size: 16px;
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .card a:hover {
+      color: #00d4ff;
+    }
+
+    /* Footer */
+    footer {
+      padding: 15px;
+      font-size: 14px;
+      color: #ccc;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      margin-top: auto;
+    }
+
+    .cursive-name {
+  font-family: 'Great Vibes', cursive;
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+  animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #fff, 0 0 10px #00d4ff, 0 0 20px #00d4ff; }
+      to { text-shadow: 0 0 10px #fff, 0 0 20px #33e0ff, 0 0 30px #33e0ff; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <h1>Contact Me</h1>
+    <div class="contact-cards">
+      <div class="card">
+        <i class="fas fa-envelope"></i>
+        <h3>Email</h3>
+        <p><a href="mailto: christophera.arceo@gmail.com">christophera.arceo@gmail.com</a></p>
+      </div>
+      <div class="card">
+        <i class="fas fa-phone"></i>
+        <h3>Phone</h3>
+        <p>+63 961 527 9706</p>
+      </div>
+      <div class="card">
+        <i class="fab fa-facebook"></i>
+        <h3>Facebook</h3>
+        <p><a href="https://www.facebook.com/share/1SK5GQ5zFh/" target="_blank">Click Me!</a></p>
+      </div>
+      <div class="card">
+      <i class="fab fa-instagram"></i>
+      <h3>Instagram</h3>
+      <p><a href="https://www.instagram.com/iamchrisken2001?igsh=NmppMWFnbTd0YmY0" target="_blank">Click Me!</a></p>
+    </div>
+      <div class="card">
+        <i class="fab fa-linkedin"></i>
+        <h3>LinkedIn</h3>
+        <p><a href="https://www.linkedin.com/in/arceo-christopher-kenneth-a-6a93992b7" target="_blank">Click Me!</a></p>
+      </div>
+      <div class="card">
+        <i class="fab fa-github"></i>
+        <h3>GitHub</h3>
+        <p><a href="https://github.com/Chrisken2001" target="_blank">Click Me!</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    Made by ❤️ <span class="cursive-name">ChrisKen</span>
+  </footer>
+</body>
+</html>

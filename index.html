@@ -181,6 +181,27 @@ footer {
   font-size: clamp(16px,4vw,20px);
   color: #fff;
 }
+/* Low-opacity moving grid overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: moveGrid 20s linear infinite;
+}
+
+@keyframes moveGrid {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 200px 200px, 200px 200px; }
+  }
 </style>
 </head>
 <body>

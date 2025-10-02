@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(270deg, #25232f, #303040);
+      background-size: 400% 400%;
+      animation: gradientMove 15s ease infinite;
+      color: white;
+      text-align: center;
+      scroll-behavior: smooth;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Navigation bar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 15px 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      z-index: 1000;
+      backdrop-filter: blur(6px);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    nav a:hover {
+      color: #00e0ff;
+      transform: scale(1.1);
+    }
+
+    h1 {
+      margin: 100px 0 20px; /* pushed down so it doesn't hide under navbar */
+      font-size: 2.5em;
+      font-weight: bold;
+    }
+
+    .image-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .image-container img {
+      display: block;
+      margin: 20px auto;
+      max-width: 90%;
+      height: auto;
+      border-radius: 10px;
+      pointer-events: none;
+      user-select: none;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 255, 255, 0.1);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .image-container img.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .image-container img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 255, 255, 0.2);
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Back to Top button */
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 12px 18px;
+      font-size: 16px;
+      background: #303040;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: none;
+      opacity: 0;
+      transform: scale(0);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    #backToTop.show {
+      display: block;
+      opacity: 1;
+      transform: scale(1.1);
+      animation: popIn 0.3s ease;
+    }
+
+    #backToTop.scrollUp {
+      animation: bounce 0.4s ease;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1.1); opacity: 1; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: scale(1.1); }
+      50% { transform: scale(1.3); }
+    }
+
+    /* Footer (Glowing style) */
+    footer {
+      padding: 15px;
+      font-size: 14px;
+      color: #ccc;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      margin-top: auto;
+    }
+
+    .cursive-name {
+      font-family: 'Great Vibes', cursive;
+      font-weight: bold;
+      font-size: 20px;
+      color: #fff;
+      text-shadow: 0 0 5px #fff, 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #fff, 0 0 10px #00d4ff, 0 0 20px #00d4ff; }
+      to { text-shadow: 0 0 10px #fff, 0 0 20px #33e0ff, 0 0 30px #33e0ff; }
+    }
+  </style>
+</head>
+<body oncontextmenu="return false;">
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <h1 id="home">My Portfolio</h1>
+
+  <!-- Portfolio Images -->
+  <div class="image-container"><img src="1.png" alt="Image 1"></div>
+  <div class="image-container"><img src="2.png" alt="Image 2"></div>
+  <div class="image-container"><img src="3.png" alt="Image 3"></div>
+  <div class="image-container"><img src="4.png" alt="Image 4"></div>
+  <div class="image-container"><img src="5.png" alt="Image 5"></div>
+  <div class="image-container"><img src="6.png" alt="Image 6"></div>
+  <div class="image-container"><img src="6.2.png" alt="Image 6.2"></div>
+  <div class="image-container"><img src="7.png" alt="Image 7"></div>
+  <div class="image-container"><img src="8.png" alt="Image 8"></div>
+  <div class="image-container"><img src="8.2.png" alt="Image 8.2"></div>
+  <div class="image-container"><img src="9.png" alt="Image 9"></div>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop">⬆</button>
+
+  <!-- Footer -->
+  <footer>
+    Made by ❤️ <span class="cursive-name">ChrisKen</span>
+  </footer>
+
+  <script>
+    const backToTop = document.getElementById("backToTop");
+    let lastScroll = 0;
+
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll > 200) {
+        backToTop.classList.add("show");
+      } else {
+        backToTop.classList.remove("show");
+      }
+
+      if (currentScroll < lastScroll && currentScroll > 200) {
+        backToTop.classList.add("scrollUp");
+        setTimeout(() => backToTop.classList.remove("scrollUp"), 400);
+      }
+
+      lastScroll = currentScroll;
+    });
+
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    document.addEventListener("touchstart", function(e) {
+      if (e.target.tagName === "IMG") e.preventDefault();
+    }, { passive: false });
+
+    const images = document.querySelectorAll(".image-container img");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    images.forEach(img => observer.observe(img));
+  </script>
+</body>
+</html>

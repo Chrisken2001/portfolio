@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,117 +6,177 @@
 <title>ChrisKen - Home</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family: 'Poppins', sans-serif;
-    color: #fff;
-    background: linear-gradient(-45deg,#25232f,#303040,#25232f,#303040);
-    background-size: 400% 400%;
-    animation: gradientMove 12s ease infinite;
-    overflow-x: hidden;
-    min-height: 100vh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-  }
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background: linear-gradient(-45deg,#25232f,#303040,#25232f,#303040);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
 
-  @keyframes gradientMove {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-  }
+@keyframes gradientMove {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
 
-  h1 { font-size:3rem; margin-bottom:10px; }
-  h2 { font-size:1.5rem; font-weight:300; margin-bottom:30px; color:#00e0ff; }
+h1 { font-size:3rem; margin-bottom:10px; }
+h2 {
+  font-size:1.5rem;
+  font-weight:300;
+  margin-bottom:30px;
+  color:#00e0ff;
+  min-height:1.5em;
+  white-space: nowrap;
+  overflow: hidden;
+}
 
-  /* Slideshow container */
-  .slideshow-container {
-    position: relative;
-    width: 250px;
-    height: 250px;
-    perspective: 1000px;
-    margin-bottom: 40px;
-  }
+.glitch {
+  color: #fff;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 3rem;
+}
 
-  .slideshow-container img {
-    position: absolute;
-    top:0;
-    left:0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 15px 25px rgba(0,0,0,0.4);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 1s ease;
-    transform-style: preserve-3d;
-    opacity: 0;
-    z-index: 1;
-  }
+.glitch::before, .glitch::after {
+  content: "X";
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0.8;
+}
 
-  .slideshow-container img.active {
-    opacity:1;
-    z-index:2;
-  }
+.glitch::before {
+  animation: glitchTop 0.5s infinite;
+}
 
-  /* Particles */
-  .spark {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: #00e0ff;
-    border-radius: 50%;
-    opacity: 0.8;
-    animation: floatSpark 5s linear infinite;
-  }
+.glitch::after {
+  animation: glitchBottom 0.7s infinite;
+}
 
-  @keyframes floatSpark {
-    from { transform: translateY(0) scale(0.5); opacity:0.8; }
-    to { transform: translateY(-250px) scale(1.5); opacity:0; }
-  }
+@keyframes glitchTop {
+  0% { transform: translate(0,0); color: #00ffff; opacity:1; }
+  10% { transform: translate(-2px,-2px); color: #ff00ff; opacity:0.7; }
+  20% { transform: translate(2px,-1px); color: #ff0; opacity:1; }
+  30% { transform: translate(-1px,1px); color: #0f0; opacity:0.8; }
+  40% { transform: translate(1px,-2px); color: #0ff; opacity:1; }
+  50% { transform: translate(-2px,2px); color: #f0f; opacity:0.9; }
+  60% { transform: translate(2px,1px); color: #0ff; opacity:1; }
+  70% { transform: translate(0px,-1px); color: #ff0; opacity:0.8; }
+  80% { transform: translate(1px,2px); color: #0f0; opacity:1; }
+  90% { transform: translate(-1px,-1px); color: #0ff; opacity:0.7; }
+  100% { transform: translate(0,0); color: #00ffff; opacity:1; }
+}
 
-  /* Button */
-  .nav-btn {
-    display: inline-block;
-    padding: 12px 24px;
-    font-size:16px;
-    font-weight:bold;
-    color:#fff;
-    background:#303040;
-    border:none;
-    border-radius:30px;
-    cursor:pointer;
-    margin-top:20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
-  }
+@keyframes glitchBottom {
+  0% { transform: translate(0,0); color: #00cfff; opacity:1; }
+  10% { transform: translate(1px,1px); color: #ff0; opacity:0.8; }
+  20% { transform: translate(-1px,2px); color: #ff00ff; opacity:1; }
+  30% { transform: translate(2px,-1px); color: #0f0; opacity:0.7; }
+  40% { transform: translate(-2px,1px); color: #0ff; opacity:1; }
+  50% { transform: translate(1px,-2px); color: #f0f; opacity:0.9; }
+  60% { transform: translate(-1px,1px); color: #ff0; opacity:1; }
+  70% { transform: translate(2px,0); color: #0f0; opacity:0.8; }
+  80% { transform: translate(-1px,-2px); color: #0ff; opacity:1; }
+  90% { transform: translate(1px,2px); color: #ff00ff; opacity:0.7; }
+  100% { transform: translate(0,0); color: #00cfff; opacity:1; }
+}
 
-  .nav-btn:hover {
-    background: #00e0ff;
-    box-shadow: 0 0 20px #00e0ff, 0 0 40px #00e0ff;
-  }
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  perspective: 1000px;
+  margin-bottom: 40px;
+  overflow: visible;
+}
 
-  /* Footer */
-  footer {
-    margin-top:50px;
-    padding:20px;
-    font-size:14px;
-    color:#ccc;
-    text-align:center;
-  }
-  .cursive-name {
-    font-family: 'Great Vibes', cursive;
-    font-weight: bold;
-    font-size: 20px;
-    color: #fff;
-  }
+.slideshow-container img {
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 1s ease;
+  transform-style: preserve-3d;
+  opacity: 0;
+  z-index: 1;
+}
+
+.slideshow-container img.active {
+  opacity:1;
+  z-index:2;
+}
+
+/* Particle */
+.spark {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: floatSpark linear infinite;
+}
+
+@keyframes floatSpark {
+  from { transform: translateY(0) scale(0.5); opacity:0.8; }
+  to { transform: translateY(-250px) scale(1.5); opacity:0; }
+}
+
+/* Button */
+.nav-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size:16px;
+  font-weight:bold;
+  color:#fff;
+  background:#303040;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  margin-top:20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #00e0ff;
+  box-shadow: 0 0 20px #00e0ff, 0 0 40px #00e0ff;
+}
+
+/* Footer */
+footer {
+  margin-top:50px;
+  padding:20px;
+  font-size:14px;
+  color:#ccc;
+  text-align:center;
+}
+.cursive-name {
+  font-family: 'Great Vibes', cursive;
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+}
 </style>
 </head>
 <body>
 
-<h1>Hello, I'm ChrisKen</h1>
-<h2>Aspiring Graphic Designer & Editor</h2>
+<h1>Hello, I'm Chris<span class="glitch">X</span>Ken</h1>
+<h2 id="typing"></h2>
 
 <div class="slideshow-container" id="slideshow">
   <img src="me.jpg" alt="Image 1" class="active">
@@ -130,81 +190,93 @@
 </a>
 
 <footer>
-  Made by ❤️ <span class="cursive-name">ChrisKen</span>
+  Made by ❤️ <span class="cursive-name">chrisXken</span>
 </footer>
 
 <script>
-  const slides = document.querySelectorAll(".slideshow-container img");
-  let current = 0;
+// Slideshow
+const slides = document.querySelectorAll(".slideshow-container img");
+let current = 0;
+setInterval(() => {
+  slides[current].classList.remove("active");
+  current = (current+1)%slides.length;
+  slides[current].classList.add("active");
+}, 4000);
 
-  // Slideshow
-  setInterval(() => {
-    slides[current].classList.remove("active");
-    current = (current+1)%slides.length;
-    slides[current].classList.add("active");
-  }, 4000);
-
-  // Particles
-  const container = document.getElementById("slideshow");
-  for(let j=0;j<15;j++){
-    const spark = document.createElement("div");
-    spark.classList.add("spark");
-    spark.style.left = `${Math.random()*100}%`;
-    spark.style.bottom = "0";
-    spark.style.animationDuration = `${3+Math.random()*3}s`;
-    container.appendChild(spark);
+// Typing effect
+const text = "Aspiring Graphic Designer & Editor";
+let i = 0;
+function typeWriter() {
+  if(i < text.length){
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, 100);
   }
+}
+window.onload = typeWriter;
 
-  // Desktop hover tilt
-  container.addEventListener('mousemove',(e)=>{
-    const rect = container.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width/2;
-    const centerY = rect.height/2;
-    const deltaX = (x-centerX)/centerX*10;
-    const deltaY = (y-centerY)/centerY*-10;
+// Desktop hover tilt
+const container = document.getElementById('slideshow');
+container.addEventListener('mousemove',(e)=>{
+  const rect = container.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const centerX = rect.width/2;
+  const centerY = rect.height/2;
+  const deltaX = (x-centerX)/centerX*15;
+  const deltaY = (y-centerY)/centerY*-15;
 
+  slides.forEach(slide=>{
+    slide.style.transform=`rotateY(${deltaX}deg) rotateX(${deltaY}deg) scale(1.05)`;
+    const shadowX=deltaX*2;
+    const shadowY=deltaY*2;
+    slide.style.boxShadow=`${-shadowX}px ${shadowY}px 25px rgba(0,224,255,0.3),
+                          ${shadowX}px ${-shadowY}px 15px rgba(0,0,0,0.3)`;
+  });
+});
+
+container.addEventListener('mouseleave',()=>{
+  slides.forEach(slide=>{
+    slide.style.transform='rotateY(0deg) rotateX(0deg) scale(1)';
+    slide.style.boxShadow='0 15px 25px rgba(0,0,0,0.4)';
+  });
+});
+
+// Mobile tilt
+if(window.DeviceOrientationEvent){
+  let tiltX=0, tiltY=0;
+  let targetX=0, targetY=0;
+
+  window.addEventListener('deviceorientation',(event)=>{
+    targetX = event.gamma/10;
+    targetY = event.beta/10;
+  });
+
+  function animateTilt(){
+    tiltX += (targetX-tiltX)*0.1;
+    tiltY += (targetY-tiltY)*0.1;
     slides.forEach(slide=>{
-      slide.style.transform=`rotateY(${deltaX}deg) rotateX(${deltaY}deg) scale(1.05)`;
-      const shadowX=deltaX*2;
-      const shadowY=deltaY*2;
+      slide.style.transform=`rotateY(${tiltX}deg) rotateX(${-tiltY}deg) scale(1.05)`;
+      const shadowX = tiltX*2;
+      const shadowY = tiltY*2;
       slide.style.boxShadow=`${-shadowX}px ${shadowY}px 25px rgba(0,224,255,0.3),
-                             ${shadowX}px ${-shadowY}px 15px rgba(0,0,0,0.3)`;
+                            ${shadowX}px ${-shadowY}px 15px rgba(0,0,0,0.3)`;
     });
-  });
-
-  container.addEventListener('mouseleave',()=>{
-    slides.forEach(slide=>{
-      slide.style.transform='rotateY(0deg) rotateX(0deg) scale(1)';
-      slide.style.boxShadow='0 15px 25px rgba(0,0,0,0.4)';
-    });
-  });
-
-  // Mobile tilt
-  if(window.DeviceOrientationEvent){
-    let tiltX=0, tiltY=0;
-    let targetX=0, targetY=0;
-
-    window.addEventListener('deviceorientation',(event)=>{
-      targetX = event.gamma/10;
-      targetY = event.beta/10;
-    });
-
-    function animateTilt(){
-      tiltX += (targetX-tiltX)*0.1;
-      tiltY += (targetY-tiltY)*0.1;
-      slides.forEach(slide=>{
-        slide.style.transform=`rotateY(${tiltX}deg) rotateX(${-tiltY}deg) scale(1.05)`;
-        const shadowX = tiltX*2;
-        const shadowY = tiltY*2;
-        slide.style.boxShadow=`${-shadowX}px ${shadowY}px 25px rgba(0,224,255,0.3),
-                               ${shadowX}px ${-shadowY}px 15px rgba(0,0,0,0.3)`;
-      });
-      requestAnimationFrame(animateTilt);
-    }
-    animateTilt();
+    requestAnimationFrame(animateTilt);
   }
+  animateTilt();
+}
+
+// Particles
+for(let j=0;j<20;j++){
+  const spark = document.createElement("div");
+  spark.classList.add("spark");
+  spark.style.left = `${Math.random()*100}%`;
+  spark.style.bottom = "0";
+  spark.style.background = `hsl(${Math.random()*360}, 100%, 50%)`;
+  spark.style.animationDuration = `${3+Math.random()*3}s`;
+  container.appendChild(spark);
+}
 </script>
 
 </body>

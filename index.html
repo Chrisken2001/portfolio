@@ -20,6 +20,7 @@ body {
   align-items:center;
   justify-content:center;
   text-align:center;
+  padding: 20px;
 }
 
 @keyframes gradientMove {
@@ -28,9 +29,13 @@ body {
   100%{background-position:0% 50%}
 }
 
-h1 { font-size:3rem; margin-bottom:10px; }
+/* Responsive Text */
+h1 { 
+  font-size: clamp(2rem, 6vw, 3rem); 
+  margin-bottom:10px; 
+}
 h2 {
-  font-size:1.5rem;
+  font-size: clamp(1rem, 4vw, 1.5rem);
   font-weight:300;
   margin-bottom:30px;
   color:#00e0ff;
@@ -39,12 +44,13 @@ h2 {
   overflow: hidden;
 }
 
+/* Glitch X */
 .glitch {
   color: #fff;
   position: relative;
   display: inline-block;
   font-weight: bold;
-  font-size: 3rem;
+  font-size: clamp(2rem, 6vw, 3rem);
 }
 
 .glitch::before, .glitch::after {
@@ -94,8 +100,8 @@ h2 {
 /* Slideshow container */
 .slideshow-container {
   position: relative;
-  width: 250px;
-  height: 250px;
+  width: clamp(200px, 30vw, 250px);
+  height: clamp(200px, 30vw, 250px);
   perspective: 1000px;
   margin-bottom: 40px;
   overflow: visible;
@@ -139,8 +145,8 @@ h2 {
 /* Button */
 .nav-btn {
   display: inline-block;
-  padding: 12px 24px;
-  font-size:16px;
+  padding: clamp(10px, 2vw, 12px) clamp(20px,5vw,24px);
+  font-size: clamp(14px,3vw,16px);
   font-weight:bold;
   color:#fff;
   background:#303040;
@@ -161,14 +167,14 @@ h2 {
 footer {
   margin-top:50px;
   padding:20px;
-  font-size:14px;
+  font-size: clamp(12px,2vw,14px);
   color:#ccc;
   text-align:center;
 }
 .cursive-name {
   font-family: 'Great Vibes', cursive;
   font-weight: bold;
-  font-size: 20px;
+  font-size: clamp(16px,4vw,20px);
   color: #fff;
 }
 </style>
@@ -190,7 +196,7 @@ footer {
 </a>
 
 <footer>
-  Made by ❤️ <span class="cursive-name">chrisXken</span>
+  Made by ❤️ <span class="cursive-name">chrisXken"</span>
 </footer>
 
 <script>

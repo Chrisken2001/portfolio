@@ -214,7 +214,7 @@ const slides = document.querySelectorAll(".slideshow-container img");
 let current = 0;
 setInterval(() => {
   slides[current].classList.remove("active");
-  current = (current+1)%slides.length;
+  current = (current + 1) % slides.length;
   slides[current].classList.add("active");
 }, 4000);
 
@@ -222,7 +222,7 @@ setInterval(() => {
 const text = "Aspiring Graphic Designer & Editor";
 let i = 0;
 function typeWriter() {
-  if(i < text.length){
+  if (i < text.length) {
     document.getElementById("typing").innerHTML += text.charAt(i);
     i++;
     setTimeout(typeWriter, 100);
@@ -230,52 +230,62 @@ function typeWriter() {
 }
 window.onload = typeWriter;
 
-// Desktop hover tilt
+// Desktop hover tilt with stronger effect
 const container = document.getElementById('slideshow');
-container.addEventListener('mousemove',(e)=>{
+container.addEventListener('mousemove', (e) => {
   const rect = container.getBoundingClientRect();
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
-  const centerX = rect.width/2;
-  const centerY = rect.height/2;
-  const deltaX = (x-centerX)/centerX*15;
-  const deltaY = (y-centerY)/centerY*-15;
+  const centerX = rect.width / 2;
+  const centerY = rect.height / 2;
 
-  slides.forEach(slide=>{
-    slide.style.transform=`rotateY(${deltaX}deg) rotateX(${deltaY}deg) scale(1.05)`;
-    const shadowX=deltaX*2;
-    const shadowY=deltaY*2;
-    slide.style.boxShadow=`${-shadowX}px ${shadowY}px 25px rgba(0,224,255,0.3),
-                          ${shadowX}px ${-shadowY}px 15px rgba(0,0,0,0.3)`;
+  const deltaX = (x - centerX) / centerX * 25; // increased tilt
+  const deltaY = (y - centerY) / centerY * -25;
+
+  slides.forEach((slide, index) => {
+    const parallaxX = deltaX * (0.9 + index * 0.05);
+    const parallaxY = deltaY * (0.9 + index * 0.05);
+
+    slide.style.transform = `rotateY(${parallaxX}deg) rotateX(${parallaxY}deg) scale(1.08)`;
+
+    const shadowX = parallaxX * 2;
+    const shadowY = parallaxY * 2;
+    slide.style.boxShadow = `${-shadowX}px ${shadowY}px 30px rgba(0,224,255,0.3),
+                             ${shadowX}px ${-shadowY}px 20px rgba(0,0,0,0.3)`;
   });
 });
 
-container.addEventListener('mouseleave',()=>{
-  slides.forEach(slide=>{
-    slide.style.transform='rotateY(0deg) rotateX(0deg) scale(1)';
-    slide.style.boxShadow='0 15px 25px rgba(0,0,0,0.4)';
+container.addEventListener('mouseleave', () => {
+  slides.forEach(slide => {
+    slide.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
+    slide.style.boxShadow = '0 15px 25px rgba(0,0,0,0.4)';
   });
 });
 
 // Mobile tilt
-if(window.DeviceOrientationEvent){
-  let tiltX=0, tiltY=0;
-  let targetX=0, targetY=0;
+if (window.DeviceOrientationEvent) {
+  let tiltX = 0, tiltY = 0;
+  let targetX = 0, targetY = 0;
 
-  window.addEventListener('deviceorientation',(event)=>{
-    targetX = event.gamma/10;
-    targetY = event.beta/10;
+  window.addEventListener('deviceorientation', (event) => {
+    targetX = event.gamma / 6; // stronger tilt
+    targetY = event.beta / 6;
   });
 
-  function animateTilt(){
-    tiltX += (targetX-tiltX)*0.1;
-    tiltY += (targetY-tiltY)*0.1;
-    slides.forEach(slide=>{
-      slide.style.transform=`rotateY(${tiltX}deg) rotateX(${-tiltY}deg) scale(1.05)`;
-      const shadowX = tiltX*2;
-      const shadowY = tiltY*2;
-      slide.style.boxShadow=`${-shadowX}px ${shadowY}px 25px rgba(0,224,255,0.3),
-                            ${shadowX}px ${-shadowY}px 15px rgba(0,0,0,0.3)`;
+  function animateTilt() {
+    tiltX += (targetX - tiltX) * 0.15; // smoother & stronger
+    tiltY += (targetY - tiltY) * 0.15;
+
+    slides.forEach((slide, index) => {
+      const parallaxX = tiltX * (0.9 + index * 0.05);
+      const parallaxY = tiltY * (0.9 + index * 0.05);
+
+      slide.style.transform = `rotateY(${parallaxX}deg) rotateX(${-parallaxY}deg) scale(1.08)`;
+
+      const shadowX = parallaxX * 2;
+      const shadowY = parallaxY * 2;
+      slide.style.boxShadow = `${-shadowX}px ${shadowY}px 30px rgba(0,224,255,0.3),
+                               ${shadowX}px ${-shadowY}px 20px rgba(0,0,0,0.3)`;
     });
     requestAnimationFrame(animateTilt);
   }
@@ -283,13 +293,13 @@ if(window.DeviceOrientationEvent){
 }
 
 // Particles
-for(let j=0;j<20;j++){
+for (let j = 0; j < 20; j++) {
   const spark = document.createElement("div");
   spark.classList.add("spark");
-  spark.style.left = `${Math.random()*100}%`;
+  spark.style.left = `${Math.random() * 100}%`;
   spark.style.bottom = "0";
-  spark.style.background = `hsl(${Math.random()*360}, 100%, 50%)`;
-  spark.style.animationDuration = `${3+Math.random()*3}s`;
+  spark.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+  spark.style.animationDuration = `${3 + Math.random() * 3}s`;
   container.appendChild(spark);
 }
 </script>

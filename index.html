@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
-  
 body, button, a, h1, h2, h3, p, span {
     font-family: 'Poppins', sans-serif;
 }
@@ -25,12 +24,35 @@ body {
   justify-content:center;
   text-align:center;
   padding: 20px;
+  position: relative;
 }
 
 @keyframes gradientMove {
   0%{background-position:0% 50%}
   50%{background-position:100% 50%}
   100%{background-position:0% 50%}
+}
+
+/* Low-opacity moving grid overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: moveGrid 20s linear infinite;
+}
+
+@keyframes moveGrid {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 200px 200px, 200px 200px; }
 }
 
 /* Responsive Text */
@@ -56,7 +78,6 @@ h2 {
   font-weight: bold;
   font-size: clamp(2rem, 6vw, 3rem);
 }
-
 .glitch::before, .glitch::after {
   content: "X";
   position: absolute;
@@ -64,15 +85,12 @@ h2 {
   top: 0;
   opacity: 0.8;
 }
-
 .glitch::before {
   animation: glitchTop 0.5s infinite;
 }
-
 .glitch::after {
   animation: glitchBottom 0.7s infinite;
 }
-
 @keyframes glitchTop {
   0% { transform: translate(0,0); color: #00ffff; opacity:1; }
   10% { transform: translate(-2px,-2px); color: #ff00ff; opacity:0.7; }
@@ -86,7 +104,6 @@ h2 {
   90% { transform: translate(-1px,-1px); color: #0ff; opacity:0.7; }
   100% { transform: translate(0,0); color: #00ffff; opacity:1; }
 }
-
 @keyframes glitchBottom {
   0% { transform: translate(0,0); color: #00cfff; opacity:1; }
   10% { transform: translate(1px,1px); color: #ff0; opacity:0.8; }
@@ -110,7 +127,6 @@ h2 {
   margin-bottom: 40px;
   overflow: visible;
 }
-
 .slideshow-container img {
   position: absolute;
   top:0;
@@ -125,7 +141,6 @@ h2 {
   opacity: 0;
   z-index: 1;
 }
-
 .slideshow-container img.active {
   opacity:1;
   z-index:2;
@@ -140,7 +155,6 @@ h2 {
   opacity: 0.8;
   animation: floatSpark linear infinite;
 }
-
 @keyframes floatSpark {
   from { transform: translateY(0) scale(0.5); opacity:0.8; }
   to { transform: translateY(-250px) scale(1.5); opacity:0; }
@@ -161,7 +175,6 @@ h2 {
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   transition: all 0.3s ease;
 }
-
 .nav-btn:hover {
   background: #00e0ff;
   box-shadow: 0 0 20px #00e0ff, 0 0 40px #00e0ff;
@@ -181,27 +194,6 @@ footer {
   font-size: clamp(16px,4vw,20px);
   color: #fff;
 }
-/* Low-opacity moving grid overlay */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  background-image:
-    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: moveGrid 20s linear infinite;
-}
-
-@keyframes moveGrid {
-  0% { background-position: 0 0, 0 0; }
-  100% { background-position: 200px 200px, 200px 200px; }
-  }
 </style>
 </head>
 <body>
@@ -222,9 +214,10 @@ body::before {
 <a href="contact.html">
   <button class="nav-btn">Get in touch</button>
 </a>
-<a href="Christopher_Kenneth_Arceo_CV.pdf" download>
+<a href="Christopher_Kenneth_Arceo_CV.pdf" download id="downloadCV">
   <button class="nav-btn">Download CV</button>
 </a>
+
 <footer>
   Made with ❤️ by <span class="cursive-name">chrisXken</span>
 </footer>
@@ -251,7 +244,7 @@ function typeWriter() {
 }
 window.onload = typeWriter;
 
-// Desktop hover tilt with stronger effect
+// Desktop hover tilt
 const container = document.getElementById('slideshow');
 container.addEventListener('mousemove', (e) => {
   const rect = container.getBoundingClientRect();
@@ -260,7 +253,7 @@ container.addEventListener('mousemove', (e) => {
   const centerX = rect.width / 2;
   const centerY = rect.height / 2;
 
-  const deltaX = (x - centerX) / centerX * 25; // increased tilt
+  const deltaX = (x - centerX) / centerX * 25;
   const deltaY = (y - centerY) / centerY * -25;
 
   slides.forEach((slide, index) => {
@@ -272,10 +265,9 @@ container.addEventListener('mousemove', (e) => {
     const shadowX = parallaxX * 2;
     const shadowY = parallaxY * 2;
     slide.style.boxShadow = `${-shadowX}px ${shadowY}px 30px rgba(0,224,255,0.3),
-                             ${shadowX}px ${-shadowY}px 20px rgba(0,0,0,0.3)`;
+                              ${shadowX}px ${-shadowY}px 20px rgba(0,0,0,0.3)`;
   });
 });
-
 container.addEventListener('mouseleave', () => {
   slides.forEach(slide => {
     slide.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
@@ -289,12 +281,12 @@ if (window.DeviceOrientationEvent) {
   let targetX = 0, targetY = 0;
 
   window.addEventListener('deviceorientation', (event) => {
-    targetX = event.gamma / 6; // stronger tilt
+    targetX = event.gamma / 6;
     targetY = event.beta / 6;
   });
 
   function animateTilt() {
-    tiltX += (targetX - tiltX) * 0.15; // smoother & stronger
+    tiltX += (targetX - tiltX) * 0.15;
     tiltY += (targetY - tiltY) * 0.15;
 
     slides.forEach((slide, index) => {
@@ -306,7 +298,7 @@ if (window.DeviceOrientationEvent) {
       const shadowX = parallaxX * 2;
       const shadowY = parallaxY * 2;
       slide.style.boxShadow = `${-shadowX}px ${shadowY}px 30px rgba(0,224,255,0.3),
-                               ${shadowX}px ${-shadowY}px 20px rgba(0,0,0,0.3)`;
+                                ${shadowX}px ${-shadowY}px 20px rgba(0,0,0,0.3)`;
     });
     requestAnimationFrame(animateTilt);
   }
@@ -323,7 +315,14 @@ for (let j = 0; j < 20; j++) {
   spark.style.animationDuration = `${3 + Math.random() * 3}s`;
   container.appendChild(spark);
 }
+
+// CV download notification
+const downloadBtn = document.getElementById("downloadCV");
+downloadBtn.addEventListener("click", () => {
+  alert("Alright! CV download has started.");
+});
 </script>
 
 </body>
-</html>
+    </html>
+  
